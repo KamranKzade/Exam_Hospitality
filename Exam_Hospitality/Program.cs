@@ -5,159 +5,175 @@ namespace Exam_Hospitality;
 
 class Program
 {
+
     static void Main()
     {
-        List<Doctor> pediatricsDoctors, traumatologyDoctors, dentistryDoctors;
-        Data(out pediatricsDoctors, out traumatologyDoctors, out dentistryDoctors);
 
-        Doctor currentDoctor;
-        string doctorFullname, time;
-        bool isReserved = false, hasFreeTime = false;
+        var location = Cursor.ShowStartMenu();
 
-        while (true)
+        if (location == 0)
         {
-            Console.Clear();
+            Cursor.ShowAdminMenu();
+        }
 
-            currentDoctor = null!;
+        else
+        {
+            List<Doctor> pediatricsDoctors, traumatologyDoctors, dentistryDoctors;
+            Data(out pediatricsDoctors, out traumatologyDoctors, out dentistryDoctors);
 
-            string name, surname, email, phone, city, complaint;
-            byte age;
+            Doctor currentDoctor;
+            string doctorFullname, time;
+            bool isReserved = false, hasFreeTime = false;
 
-            PasientSignIn(out name, out surname, out age, out email, out phone, out city, out complaint);
-
-            Pasient pasient;
-
-            try
+            while (true)
             {
-                pasient = new(name, surname, age, city, email, phone, complaint);
-            }
-            catch (SystemException ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.ReadKey(false);
-                continue;
-            }
+                Console.Clear();
 
-            Console.WriteLine(@"Which specialist do you need?
-1) Pediatrics
-2) Traumotology
-3) Dentistry");
+                currentDoctor = null!;
 
-            if (!int.TryParse(Console.ReadLine(), out int command))
-            {
-                Console.WriteLine("Wrong Choice");
-                Console.ReadKey(false);
-                continue;
-            }
+                string name, surname, email, phone, city, complaint;
+                byte age;
 
-            List<Doctor> doctors = null!;
+                PasientSignIn(out name, out surname, out age, out email, out phone, out city, out complaint);
 
-            switch (command)
-            {
-                case 1:
-                    doctors = pediatricsDoctors;
-                    break;
-                case 2:
-                    doctors = traumatologyDoctors;
-                    break;
-                case 3:
-                    doctors = dentistryDoctors;
-                    break;
+                Pasient pasient;
 
-                default:
+                try
+                {
+                    pasient = new(name, surname, age, city, email, phone, complaint);
+                }
+                catch (SystemException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.ReadKey(false);
+                    continue;
+                }
+
+                Console.WriteLine(@"Which specialist do you need?
+            1) Pediatrics
+            2) Traumotology
+            3) Dentistry");
+
+                if (!int.TryParse(Console.ReadLine(), out int command))
+                {
                     Console.WriteLine("Wrong Choice");
                     Console.ReadKey(false);
                     continue;
-            }
+                }
 
+                List<Doctor> doctors = null!;
 
-            while (true)
-            {
-                Console.Clear();
-                foreach (var doctor in doctors)
-                    Console.WriteLine(doctor);
-
-                Console.WriteLine("Choose the doctor and enter his/her fullname");
-                doctorFullname = Console.ReadLine()!;
-
-                foreach (var doctor in doctors)
+                switch (command)
                 {
-                    if (doctor?.Name?.ToLower() == doctorFullname.Split()[0].ToLower() && doctor?.Surname?.ToLower() == doctorFullname.Split()[1].ToLower())
-                    {
-                        currentDoctor = doctor;
+                    case 1:
+                        doctors = pediatricsDoctors;
                         break;
+                    case 2:
+                        doctors = traumatologyDoctors;
+                        break;
+                    case 3:
+                        doctors = dentistryDoctors;
+                        break;
+
+                    default:
+                        Console.WriteLine("Wrong Choice");
+                        Console.ReadKey(false);
+                        continue;
+                }
+
+
+                while (true)
+                {
+                    Console.Clear();
+                    foreach (var doctor in doctors)
+                        Console.WriteLine(doctor);
+
+                    Console.WriteLine("Choose the doctor and enter his/her fullname");
+                    doctorFullname = Console.ReadLine()!;
+
+                    foreach (var doctor in doctors)
+                    {
+                        if (doctor?.Name?.ToLower() == doctorFullname.Split()[0].ToLower() && doctor?.Surname?.ToLower() == doctorFullname.Split()[1].ToLower())
+                        {
+                            currentDoctor = doctor;
+                            break;
+                        }
                     }
-                }
 
-                if (currentDoctor is null)
-                {
-                    Console.WriteLine("Such doctor not found please enter correct information");
-                    Console.ReadKey(false);
-                    continue;
-                }
-                break;
-            }
-
-            while (true)
-            {
-                Console.Clear();
-                Console.WriteLine(currentDoctor);
-
-                foreach (var receptionTime in currentDoctor.InspectionTimes)
-                {
-                    if (receptionTime.Rezerv is null)
-                        hasFreeTime = true;
-                }
-
-                if (!hasFreeTime)
-                {
-                    Console.WriteLine("Doctor has not free time please choose another one");
-                    Console.ReadKey(false);
+                    if (currentDoctor is null)
+                    {
+                        Console.WriteLine("Such doctor not found please enter correct information");
+                        Console.ReadKey(false);
+                        continue;
+                    }
                     break;
                 }
 
-                foreach (var receptionTime in currentDoctor.InspectionTimes)
-                    Console.WriteLine(receptionTime);
-
-                Console.WriteLine("Choose the reception time");
-                time = Console.ReadLine()!;
-
-                if (string.IsNullOrWhiteSpace(time) || time.Length != 11)
+                while (true)
                 {
-                    Console.WriteLine("Entered wrong information");
-                    Console.ReadKey(false);
-                    continue;
-                }
+                    Console.Clear();
+                    Console.WriteLine(currentDoctor);
 
-
-
-                for (int i = 0; i < currentDoctor.InspectionTimes.Count; i++)
-                {
-                    if (currentDoctor.InspectionTimes[i].Time == time)
+                    foreach (var receptionTime in currentDoctor.InspectionTimes)
                     {
-                        if (currentDoctor.InspectionTimes[i].Rezerv is null)
-                        {
-                            InspectionTime temp = currentDoctor.InspectionTimes[i];
-                            temp.Rezerv = pasient;
-                            currentDoctor.InspectionTimes[i] = temp;
-                            isReserved = true;
-                            Console.WriteLine("Reserved succesfully");
-                            Console.ReadKey(false);
-                        }
-                        else
-                        {
-                            Console.WriteLine("This time is reserved please choose another one");
-                            Console.ReadKey(false);
-                        }
+                        if (receptionTime.Rezerv is null)
+                            hasFreeTime = true;
+                    }
+
+                    if (!hasFreeTime)
+                    {
+                        Console.WriteLine("Doctor has not free time please choose another one");
+                        Console.ReadKey(false);
                         break;
                     }
-                }
 
-                if (isReserved)
-                    break;
+                    foreach (var receptionTime in currentDoctor.InspectionTimes)
+                        Console.WriteLine(receptionTime);
+
+                    Console.WriteLine("Choose the reception time");
+                    time = Console.ReadLine()!;
+
+                    if (string.IsNullOrWhiteSpace(time) || time.Length != 11)
+                    {
+                        Console.WriteLine("Entered wrong information");
+                        Console.ReadKey(false);
+                        continue;
+                    }
+
+
+
+                    for (int i = 0; i < currentDoctor.InspectionTimes.Count; i++)
+                    {
+                        if (currentDoctor.InspectionTimes[i].Time == time)
+                        {
+                            if (currentDoctor.InspectionTimes[i].Rezerv is null)
+                            {
+                                InspectionTime temp = currentDoctor.InspectionTimes[i];
+                                temp.Rezerv = pasient;
+                                currentDoctor.InspectionTimes[i] = temp;
+                                isReserved = true;
+                                Console.WriteLine("Reserved succesfully");
+                                Console.ReadKey(false);
+                            }
+                            else
+                            {
+                                Console.WriteLine("This time is reserved please choose another one");
+                                Console.ReadKey(false);
+                            }
+                            break;
+                        }
+                    }
+
+                    if (isReserved)
+                        break;
+                }
             }
         }
+
     }
+
+
+
 
     private static void PasientSignIn(out string name, out string surname, out byte age, out string email, out string phone, out string city, out string complaint)
     {
@@ -184,6 +200,7 @@ class Program
 
     private static void Data(out List<Doctor> pediatricsDoctors, out List<Doctor> traumatologyDoctors, out List<Doctor> dentistryDoctors)
     {
+        Console.ResetColor();
         List<InspectionTime> inspectionTime = new List<InspectionTime>()
         {
             new InspectionTime("09:00-11:00"),

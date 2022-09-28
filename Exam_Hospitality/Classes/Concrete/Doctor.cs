@@ -1,4 +1,5 @@
-﻿using Exam_Hospitality.Classes.Abstract;
+﻿using Exam_Hospitality.Classes;
+using Exam_Hospitality.Classes.Abstract;
 
 
 namespace Exam_Hospitality.Classes.Concrete;
