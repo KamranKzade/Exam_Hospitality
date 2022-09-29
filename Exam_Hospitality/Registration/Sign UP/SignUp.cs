@@ -2,6 +2,7 @@
 using Exam_Hospitality.Classes.Concrete.Admin;
 using Exam_Hospitality.DataBase;
 using Exam_Hospitality.Exceptions;
+using Exam_Hospitality.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -136,6 +137,7 @@ public class SignUP
         if (ValidInfos(name, surname, age, email, username, password, city, phone))
         {
             byte.TryParse(age, out byte age2);
+        //    JsonSerialization.SerializeDatabase(GlobalData.database);
             return new Admin(name, surname, age2, city, email, phone, username, password);
         }
         return null!;

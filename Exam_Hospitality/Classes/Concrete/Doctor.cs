@@ -5,7 +5,7 @@ using Exam_Hospitality.Classes.Abstract;
 namespace Exam_Hospitality.Classes.Concrete;
 
 
-public class Doctor : Human
+public sealed class  Doctor : Human
 {
    public  List<InspectionTime> InspectionTimes;
     public bool Certificate { get; set; }
@@ -61,10 +61,34 @@ public class Doctor : Human
         InspectionTimes = inspectionTimes;
     }
 
+    //    public override string ToString()
+    // => $@"{base.ToString()}
+    //Experience: {Experience}
+    //DegreeOfEducation: {DegreeOfEducation}
+    //Certificate: {Certificate}
+    //";
+
     public override string ToString()
- => $@"{base.ToString()}
-Experience: {Experience}
-DegreeOfEducation: {DegreeOfEducation}
-Certificate: {Certificate}
-";
+    {
+        Console.WriteLine($"{base.ToString()}");
+     
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write("Experience: ");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write($"{Experience}\n");
+   
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write("DegreeOfEducation: ");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write($"{DegreeOfEducation}\n");
+
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write("Certificate: ");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write($"{Certificate}\n");
+
+        Console.ResetColor();
+        return "";
+    }
+
 }

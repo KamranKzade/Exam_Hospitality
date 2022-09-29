@@ -14,8 +14,26 @@ public struct InspectionTime
     {
         Time = time;
     }
+   
+    //    public override string ToString()
+    //    => $@"Time: {Time}
+    //Rezerv: {(Rezerv is null ? "No" : "Yes")}";
+
     public override string ToString()
-    => $@"Time: {Time}
-Rezerv: {(Rezerv is null ? "No" : "Yes")}";
+    {
+       
+
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write("Time: ");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.Write($"{Time}\n");
+
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write("Rezerv: ");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write($"{(Rezerv is null ? "No" : "Yes")}\n");
+
+        return "";
+    }
 
 }

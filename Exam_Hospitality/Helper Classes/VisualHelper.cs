@@ -27,6 +27,7 @@ public class VisualHelper
 
     #endregion
 
+    #region +Welcome
 
     public static void ShowWelcome()
     {
@@ -42,6 +43,8 @@ public class VisualHelper
 ");
         Console.ResetColor();
     }
+
+    #endregion
 
     #region Rezerv
 
@@ -60,7 +63,6 @@ public class VisualHelper
     }
 
     #endregion
-
 
     #region +EnterData
 
@@ -95,9 +97,7 @@ public class VisualHelper
 
     #endregion
 
-
-
-    #region Bolmeler
+    #region +Bolmeler
 
 
     public static void ShowPediatricsScript()
@@ -171,7 +171,6 @@ public class VisualHelper
     }
 
     #endregion
-
 
     #region +AdminClick
 
@@ -265,5 +264,65 @@ public class VisualHelper
 
     #endregion
 
+    #region +Doctor
 
+    public static void ShowDoctorScript()
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(@"
+                    $$$$$$$\                        $$\                         
+                    $$  __$$\                       $$ |                        
+                    $$ |  $$ | $$$$$$\   $$$$$$$\ $$$$$$\    $$$$$$\   $$$$$$\  
+                    $$ |  $$ |$$  __$$\ $$  _____|\_$$  _|  $$  __$$\ $$  __$$\ 
+                    $$ |  $$ |$$ /  $$ |$$ /        $$ |    $$ /  $$ |$$ |  \__|
+                    $$ |  $$ |$$ |  $$ |$$ |        $$ |$$\ $$ |  $$ |$$ |      
+                    $$$$$$$  |\$$$$$$  |\$$$$$$$\   \$$$$  |\$$$$$$  |$$ |      
+                    \_______/  \______/  \_______|   \____/  \______/ \__|      
+                                                       ");
+        Console.ResetColor();
+    }
+
+    public static void ShowDoctorInfoScript()
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(@"
+                    ██████╗  ██████╗  ██████╗████████╗ ██████╗ ██████╗     ██╗███╗   ██╗███████╗ ██████╗ 
+                    ██╔══██╗██╔═══██╗██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗    ██║████╗  ██║██╔════╝██╔═══██╗
+                    ██║  ██║██║   ██║██║        ██║   ██║   ██║██████╔╝    ██║██╔██╗ ██║█████╗  ██║   ██║
+                    ██║  ██║██║   ██║██║        ██║   ██║   ██║██╔══██╗    ██║██║╚██╗██║██╔══╝  ██║   ██║
+                    ██████╔╝╚██████╔╝╚██████╗   ██║   ╚██████╔╝██║  ██║    ██║██║ ╚████║██║     ╚██████╔╝
+                    ╚═════╝  ╚═════╝  ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝    ╚═╝╚═╝  ╚═══╝╚═╝      ╚═════╝ ");
+        Console.ResetColor();
+    }
+
+    #endregion
+
+    #region +Reception
+
+
+    public static void ShowRecptionScript()
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(@"
+            ┬─┐┌─┐┌─┐┌─┐┌─┐┌┬┐┬┌─┐┌┐┌  ┌┬┐┬┌┬┐┌─┐
+            ├┬┘├┤ │  ├┤ ├─┘ │ ││ ││││   │ ││││├┤ 
+            ┴└─└─┘└─┘└─┘┴   ┴ ┴└─┘┘└┘   ┴ ┴┴ ┴└─┘");
+        Console.ResetColor();
+    }
+
+    public static void ShowSuccesfully()
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(@"
+.--.                                   .                                 .-.     . .     
+|   )                                  |                                 |       | |     
+|--'  .-. .--. .-. .--..    ._ .-.  .-.|      .--..  .  .-. .-. .-. .--.-|- .  . | | .  .
+|  \ (.-' `--.(.-' |    \  /  (.-' (   |      `--.|  | (   (   (.-' `--. |  |  | | | |  |
+'   ` `--'`--' `--''     `'    `--' `-'`-     `--'`--`- `-' `-' `--'`--' '  `--`-`-`-`--|
+                                                                                        ;
+                                                                                     `-' ");
+        Console.ResetColor();
+    }
+
+    #endregion
 }
