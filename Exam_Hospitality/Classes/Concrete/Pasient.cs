@@ -3,7 +3,7 @@
 
 namespace Exam_Hospitality.Classes.Concrete;
 
- class  Pasient : Human
+public class  Pasient : Human
 {
     // Sikayet 
     private string? _complaint;

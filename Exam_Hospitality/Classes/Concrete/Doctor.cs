@@ -5,9 +5,9 @@ using Exam_Hospitality.Classes.Abstract;
 namespace Exam_Hospitality.Classes.Concrete;
 
 
-class Doctor : Human
+public class Doctor : Human
 {
-    public List<InspectionTime> InspectionTimes;
+   public  List<InspectionTime> InspectionTimes;
     public bool Certificate { get; set; }
 
 
@@ -51,7 +51,7 @@ class Doctor : Human
         }
     }
 
-    public Doctor(string? name, string? surname, byte age, string? city, string? email, string? phone, byte experience, string? education, bool certicate, string? profession, List<InspectionTime> inspectionTimes)
+    public  Doctor(string? name, string? surname, byte age, string? city, string? email, string? phone, byte experience, string? education, bool certicate, string? profession, List<InspectionTime> inspectionTimes)
         : base(name, surname, age, city, email, phone)
     {
         Experience = experience;

@@ -8,6 +8,8 @@ namespace Exam_Hospitality
 {
     public class VisualHelper
     {
+        #region +Giris
+
         public static void Start()
         {
             {
@@ -23,6 +25,9 @@ namespace Exam_Hospitality
             }
         }
 
+        #endregion
+
+
         public static void ShowWelcome()
         {
 
@@ -37,6 +42,9 @@ namespace Exam_Hospitality
 ");
             Console.ResetColor();
         }
+
+        #region Rezerv
+
         public static void ShowClinicName()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -51,7 +59,10 @@ namespace Exam_Hospitality
 
         }
 
-        #region Choice
+        #endregion
+
+
+        #region +Choice
 
         public static void ShowAdminScript()
         {
@@ -72,55 +83,55 @@ namespace Exam_Hospitality
 
 
 
+
+        #region +AdminClick
+
         public static void ShowAdmin()
         {
             Console.WriteLine(@"
-                     █████╗ ██████╗ ███╗   ███╗██╗███╗   ██╗
-                    ██╔══██╗██╔══██╗████╗ ████║██║████╗  ██║
-                    ███████║██║  ██║██╔████╔██║██║██╔██╗ ██║
-                    ██╔══██║██║  ██║██║╚██╔╝██║██║██║╚██╗██║
-                    ██║  ██║██████╔╝██║ ╚═╝ ██║██║██║ ╚████║
-                    ╚═╝  ╚═╝╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝                                      
+                                   █████╗ ██████╗ ███╗   ███╗██╗███╗   ██╗
+                                  ██╔══██╗██╔══██╗████╗ ████║██║████╗  ██║
+                                  ███████║██║  ██║██╔████╔██║██║██╔██╗ ██║
+                                  ██╔══██║██║  ██║██║╚██╔╝██║██║██║╚██╗██║
+                                  ██║  ██║██████╔╝██║ ╚═╝ ██║██║██║ ╚████║
+                                  ╚═╝  ╚═╝╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝                                      
 ");
         }
 
-        #region Admin
+        #endregion
+
+        #region +Admin
 
         public static void ShowSignInScript()
         {
-            //   Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($@"
                                                 ╔═══════════╗
                                                 ║  Sign In  ║
                                                 ╚═══════════╝");
-            //    Console.ResetColor();
         }
         public static void ShowSignUpScript()
         {
-            //   Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($@"
                                                 ╔═══════════╗
                                                 ║  Sign Up  ║
                                                 ╚═══════════╝");
-            //   Console.ResetColor();
         }
         public static void ShowBackScript()
         {
-            //   Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($@"
                                                 ╔═══════════╗
                                                 ║   BACK    ║
                                                 ╚═══════════╝
 ");
-            //   Console.ResetColor();
         }
 
         #endregion
 
-        #region SignUp && Sign In
+        #region +SignUp && Sign In
 
         public static void ShowSignUpHeadline()
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(@"  
                                          ███████╗██╗ ██████╗ ███╗   ██╗    ██╗   ██╗██████╗ 
                                         ██╔════╝██║██╔════╝ ████╗  ██║    ██║   ██║██╔══██╗
@@ -133,6 +144,7 @@ namespace Exam_Hospitality
         }
         public static void ShowSignInHeadline()
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(@" 
                                         ███████╗██╗ ██████╗ ███╗   ██╗    ██╗ ███╗   ██╗
                                         ██╔════╝██║██╔════╝ ████╗  ██║    ██║ ████╗  ██║
@@ -146,6 +158,24 @@ namespace Exam_Hospitality
 
         #endregion
 
+        #region +Qeydiyyat
 
+        public static void ShowQeydiyyatdanKecdiz()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(@"
+██████╗ ███████╗██╗   ██╗██████╗ ██╗██╗   ██╗██╗   ██╗ █████╗ ████████╗    ██╗  ██╗███████╗ ██████╗██████╗ ██╗███████╗
+██╔═══██╗██╔════╝╚██╗ ██╔╝██╔══██╗██║╚██╗ ██╔╝╚██╗ ██╔╝██╔══██╗╚══██╔══╝    ██║ ██╔╝██╔════╝██╔════╝██╔══██╗██║╚══███╔╝
+██║   ██║█████╗   ╚████╔╝ ██║  ██║██║ ╚████╔╝  ╚████╔╝ ███████║   ██║       █████╔╝ █████╗  ██║     ██║  ██║██║  ███╔╝ 
+██║▄▄ ██║██╔══╝    ╚██╔╝  ██║  ██║██║  ╚██╔╝    ╚██╔╝  ██╔══██║   ██║       ██╔═██╗ ██╔══╝  ██║     ██║  ██║██║ ███╔╝  
+╚██████╔╝███████╗   ██║   ██████╔╝██║   ██║      ██║   ██║  ██║   ██║       ██║  ██╗███████╗╚██████╗██████╔╝██║███████╗
+ ╚══▀▀═╝ ╚══════╝   ╚═╝   ╚═════╝ ╚═╝   ╚═╝      ╚═╝   ╚═╝  ╚═╝   ╚═╝       ╚═╝  ╚═╝╚══════╝ ╚═════╝╚═════╝ ╚═╝╚══════╝");
+
+            Thread.Sleep(3000);
+        }
+
+        #endregion
+    
+    
     }
 }

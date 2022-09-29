@@ -4,7 +4,7 @@
 
 namespace Exam_Hospitality.Classes;
 
-struct InspectionTime
+public struct InspectionTime
 {
     public string? Time { get; set; }
 
