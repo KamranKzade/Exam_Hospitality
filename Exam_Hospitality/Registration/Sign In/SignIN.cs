@@ -10,58 +10,57 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exam_Hospitality
+namespace Exam_Hospitality;
+
+public class SignIN
 {
-    public class SignIN
+    public static ArrayList GetUser(string username, string password)
     {
-        public static ArrayList GetUser(string username, string password)
+        GlobalData.database = JsonSerialization.DeserializeDatabase();
+
+        StackFrame callStack = new StackFrame(1, true);
+        string currentFile = new StackTrace(true).GetFrame(0)!.GetFileName()!;
+        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
         {
-            GlobalData.database = JsonSerialization.DeserializeDatabase();
+            Warning.Message("ALL INFORMATIONS WERE NOT ENTERED!");
+            throw new DetailedException("All Informations Were Not Entered!", DateTime.Now, callStack.GetFileLineNumber(), currentFile);
+        }
 
-            StackFrame callStack = new StackFrame(1, true);
-            string currentFile = new StackTrace(true).GetFrame(0)!.GetFileName()!;
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+
+        if (GlobalData.database.Admins != null)
+        {
+            foreach (var admin in GlobalData.database.Admins)
             {
-                Warning.Message("ALL INFORMATIONS WERE NOT ENTERED!");
-                throw new DetailedException("All Informations Were Not Entered!", DateTime.Now, callStack.GetFileLineNumber(), currentFile);
-            }
-
-
-            if (GlobalData.database.Admins != null)
-            {
-                foreach (var admin in GlobalData.database.Admins)
+                if (admin.UserName == username && admin.Password == password)
                 {
-                    if (admin.UserName == username && admin.Password == password)
-                    {
-                        ArrayList arrayList = new();
-                        arrayList.Add(admin);
-                        return arrayList;
-                    }
+                    ArrayList arrayList = new();
+                    arrayList.Add(admin);
+                    return arrayList;
                 }
             }
-
-            // Show to user
-            Warning.Message("INCORRECT USERNAME OR PASSWORD! USER WAS NOT FOUND!");
-            throw new DetailedException($"The user '{username}' with password '{password}' was not found!", DateTime.Now, callStack.GetFileLineNumber(), currentFile);
         }
-        public static ArrayList SignIn()
+
+        // Show to user
+        Warning.Message("INCORRECT USERNAME OR PASSWORD! USER WAS NOT FOUND!");
+        throw new DetailedException($"The user '{username}' with password '{password}' was not found!", DateTime.Now, callStack.GetFileLineNumber(), currentFile);
+    }
+    public static ArrayList SignIn()
+    {
+        while (true)
         {
-            while (true)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write("\n ENTER YOUR USERNAME : ");
-                Console.ForegroundColor = ConsoleColor.Green;
-                string username = Console.ReadLine()!.Trim();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("\n ENTER YOUR USERNAME : ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            string username = Console.ReadLine()!.Trim();
 
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write("\n ENTER YOUR PASSWORD : ");
-                Console.ForegroundColor = ConsoleColor.Green;
-                string password = Console.ReadLine()!.Trim();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("\n ENTER YOUR PASSWORD : ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            string password = Console.ReadLine()!.Trim();
 
-                ArrayList user = GetUser(username, password);
+            ArrayList user = GetUser(username, password);
 
-                return user;
-            }
+            return user;
         }
     }
 }

@@ -19,6 +19,12 @@ class Program
 
             else
             {
+                Console.Clear();
+                VisualHelper.ShowWelcome();
+                VisualHelper.ShowClinicName();
+                Thread.Sleep(2000);
+
+                //// Elave olunmalidir.....   3 hekim 
                 List<Doctor> pediatricsDoctors, traumatologyDoctors, dentistryDoctors;
                 MainlyUsed.Data(out pediatricsDoctors, out traumatologyDoctors, out dentistryDoctors);
 
@@ -50,31 +56,31 @@ class Program
                         continue;
                     }
 
-                    Console.WriteLine(@"Which specialist do you need?
-            1) Pediatrics
-            2) Traumotology
-            3) Dentistry");
 
-                    if (!int.TryParse(Console.ReadLine(), out int command))
-                    {
-                        Console.WriteLine("Wrong Choice");
-                        Console.ReadKey(false);
-                        continue;
-                    }
+
+                    var command = Cursor.ShowRezervMenu();
+
+
+
 
                     List<Doctor> doctors = null!;
 
                     switch (command)
                     {
-                        case 1:
+                        case 0:
                             doctors = pediatricsDoctors;
                             break;
-                        case 2:
+                        case 1:
                             doctors = traumatologyDoctors;
                             break;
-                        case 3:
+                        case 2:
                             doctors = dentistryDoctors;
                             break;
+
+                        //// burda qalmisam
+
+                        //// 3 , 4 , 5 deyerine gore hekimler doldurulub yazilmalidir
+
 
                         default:
                             Console.WriteLine("Wrong Choice");
@@ -173,8 +179,4 @@ class Program
 
         }
     }
-
-
-
-
 }

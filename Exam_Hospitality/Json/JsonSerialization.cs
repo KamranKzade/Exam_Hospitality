@@ -4,36 +4,35 @@ using System.IO;
 
 
 
-namespace Exam_Hospitality.Json
+namespace Exam_Hospitality.Json;
+
+public class JsonSerialization
 {
-    public class JsonSerialization
+    public static void SerializeDatabase(Database db)
     {
-        public static void SerializeDatabase(Database db)
-        {
-            var serializer = new JsonSerializer();
+        var serializer = new JsonSerializer();
 
-            using (var sw = new StreamWriter("database.json"))
+        using (var sw = new StreamWriter("database.json"))
+        {
+            using (JsonTextWriter jw = new JsonTextWriter(sw))
             {
-                using (JsonTextWriter jw = new JsonTextWriter(sw))
-                {
-                    jw.Formatting = Formatting.Indented;
-                    serializer.Serialize(jw, db);
-                }
+                jw.Formatting = Formatting.Indented;
+                serializer.Serialize(jw, db);
             }
         }
+    }
 
-        public static Database DeserializeDatabase()
+    public static Database DeserializeDatabase()
+    {
+        Database db;
+        var serializer = new JsonSerializer();
+        using (var sr = new StreamReader("database.json"))
         {
-            Database db;
-            var serializer = new JsonSerializer();
-            using (var sr = new StreamReader("database.json"))
+            using (var jr = new JsonTextReader(sr))
             {
-                using (var jr = new JsonTextReader(sr))
-                {
-                    db = serializer.Deserialize<Database>(jr)!;
-                }
+                db = serializer.Deserialize<Database>(jr)!;
             }
-            return db;
         }
+        return db;
     }
 }

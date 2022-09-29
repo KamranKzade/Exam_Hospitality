@@ -66,6 +66,5 @@ public class Doctor : Human
 Experience: {Experience}
 DegreeOfEducation: {DegreeOfEducation}
 Certificate: {Certificate}
-InspectionTimes: {InspectionTimes}
 ";
 }

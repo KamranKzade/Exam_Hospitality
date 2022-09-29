@@ -4,35 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exam_Hospitality
-{
-    public class VisualHelper
-    {
-        #region +Giris
+namespace Exam_Hospitality;
 
-        public static void Start()
+public class VisualHelper
+{
+    #region +Giris
+
+    public static void Start()
+    {
         {
-            {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(@"
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(@"
                             ██████╗   █████╗  ██╗  ██╗ ██╗ ██╗            ██████╗  ██╗     
                             ██╔══██╗ ██╔══██╗ ╚██╗██╔╝ ██║ ██║           ██╔═══██╗ ██║     
                             ██║  ██║ ███████║  ╚███╔╝  ██║ ██║           ██║   ██║ ██║     
                             ██║  ██║ ██╔══██║  ██╔██╗  ██║ ██║           ██║   ██║ ██║     
                             ██████╔╝ ██║  ██║ ██╔╝ ██╗ ██║ ███████╗      ╚██████╔╝ ███████╗
                             ╚═════╝  ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝ ╚══════╝       ╚═════╝  ╚══════╝");
-                Console.ResetColor();
-            }
+            Console.ResetColor();
         }
+    }
 
-        #endregion
+    #endregion
 
 
-        public static void ShowWelcome()
-        {
+    public static void ShowWelcome()
+    {
 
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(@"
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(@"
                     ██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗
                     ██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝
                     ██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗  
@@ -40,55 +40,144 @@ namespace Exam_Hospitality
                     ╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗
                      ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
 ");
-            Console.ResetColor();
-        }
+        Console.ResetColor();
+    }
 
-        #region Rezerv
+    #region Rezerv
 
-        public static void ShowClinicName()
-        {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(@"
+    public static void ShowClinicName()
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(@"
      ██████╗ ██╗  ██╗███████╗██╗ ██████╗ ███████╗███╗   ██╗     ██████╗██╗     ██╗███╗   ██╗██╗ ██████╗
     ██╔═══██╗╚██╗██╔╝██╔════╝██║██╔════╝ ██╔════╝████╗  ██║    ██╔════╝██║     ██║████╗  ██║██║██╔════╝
     ██║   ██║ ╚███╔╝ ███████╗██║██║  ███╗█████╗  ██╔██╗ ██║    ██║     ██║     ██║██╔██╗ ██║██║██║     
     ██║   ██║ ██╔██╗ ╚════██║██║██║   ██║██╔══╝  ██║╚██╗██║    ██║     ██║     ██║██║╚██╗██║██║██║     
     ╚██████╔╝██╔╝ ██╗███████║██║╚██████╔╝███████╗██║ ╚████║    ╚██████╗███████╗██║██║ ╚████║██║╚██████╗
      ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝     ╚═════╝╚══════╝╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝");
-            Console.ResetColor();
+        Console.ResetColor();
 
-        }
+    }
 
-        #endregion
+    #endregion
 
 
-        #region +Choice
+    #region +EnterData
 
-        public static void ShowAdminScript()
-        {
-            Console.WriteLine($@"
+    public static void EnterData()
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+
+        Console.WriteLine(@"
+╔═╗ ┌┐┌┌┬┐┌─┐┬─┐  ┬ ┬┌─┐┬ ┬┬─┐  ┌┬┐┌─┐┌┬┐┌─┐                         
+║╣  │││ │ ├┤ ├┬┘  └┬┘│ ││ │├┬┘   ││├─┤ │ ├─┤                         
+╚═╝ ┘└┘ ┴ └─┘┴└─   ┴ └─┘└─┘┴└─  ─┴┘┴ ┴ ┴ ┴ ┴                         
+                                                ╔═╗┬  ┌─┐┌─┐┌─┐┌─┐  
+                                                ╠═╝│  ├┤ ├─┤└─┐├┤   
+                                                ╩  ┴─┘└─┘┴ ┴└─┘└─┘  ");
+
+        Console.ResetColor();
+    
+    }
+    #endregion
+
+    #region +NeedLabel
+
+    public static void NeedLabel()
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(@"╦ ╦┬ ┬┬┌─┐┬ ┬  ┌─┐┌─┐┌─┐┌─┐┬┌─┐┬  ┬┌─┐┌┬┐  ┌┬┐┌─┐  ┬ ┬┌─┐┬ ┬  ┌┐┌┌─┐┌─┐┌┬┐┌─┐
+║║║├─┤││  ├─┤  └─┐├─┘├┤ │  │├─┤│  │└─┐ │    │││ │  └┬┘│ ││ │  │││├┤ ├┤  ││ ┌┘
+╚╩╝┴ ┴┴└─┘┴ ┴  └─┘┴  └─┘└─┘┴┴ ┴┴─┘┴└─┘ ┴   ─┴┘└─┘   ┴ └─┘└─┘  ┘└┘└─┘└─┘─┴┘ o ");
+        Console.ResetColor();
+    }
+
+    #endregion
+
+
+
+    #region Bolmeler
+
+
+    public static void ShowPediatricsScript()
+    {
+        Console.WriteLine($@"                  
+                                                ╔══════════════════╗
+                                                ║    Pediatrics    ║
+                                                ╚══════════════════╝");
+    }
+    public static void ShowTraumotologyScript()
+    {
+        Console.WriteLine($@"                   
+                                                ╔══════════════════╗
+                                                ║   Traumotology   ║
+                                                ╚══════════════════╝");
+    }
+
+
+    public static void ShowDentistryScript()
+    {
+        Console.WriteLine($@"                   
+                                                ╔══════════════════╗
+                                                ║     Dentistry    ║
+                                                ╚══════════════════╝");
+    }
+
+
+    public static void ShowDietologScript()
+    {
+        Console.WriteLine($@"                   
+                                                ╔══════════════════╗
+                                                ║     Dietolog     ║
+                                                ╚══════════════════╝");
+    }
+
+    public static void ShowPsixiatrScript()
+    {
+        Console.WriteLine($@"                   
+                                                ╔══════════════════╗
+                                                ║     Psixiatr     ║
+                                                ╚══════════════════╝");
+    }
+
+
+
+    public static void ShowRentgenologScript()
+    {
+        Console.WriteLine($@"                   
+                                                ╔══════════════════╗
+                                                ║    Rentgenolog   ║
+                                                ╚══════════════════╝");
+    }
+
+    #endregion
+
+    #region +Choice
+
+    public static void ShowAdminScript()
+    {
+        Console.WriteLine($@"
                                                 ╔════════════╗
                                                 ║   Admin    ║
                                                 ╚════════════╝");
-        }
-        public static void ShowRezervScript()
-        {
-            Console.WriteLine($@"
+    }
+    public static void ShowRezervScript()
+    {
+        Console.WriteLine($@"
                                                 ╔════════════╗
                                                 ║   Rezerv   ║
                                                 ╚════════════╝");
-        }
+    }
 
-        #endregion
-
-
+    #endregion
 
 
-        #region +AdminClick
+    #region +AdminClick
 
-        public static void ShowAdmin()
-        {
-            Console.WriteLine(@"
+    public static void ShowAdmin()
+    {
+        Console.WriteLine(@"
                                    █████╗ ██████╗ ███╗   ███╗██╗███╗   ██╗
                                   ██╔══██╗██╔══██╗████╗ ████║██║████╗  ██║
                                   ███████║██║  ██║██╔████╔██║██║██╔██╗ ██║
@@ -96,56 +185,56 @@ namespace Exam_Hospitality
                                   ██║  ██║██████╔╝██║ ╚═╝ ██║██║██║ ╚████║
                                   ╚═╝  ╚═╝╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝                                      
 ");
-        }
+    }
 
-        #endregion
+    #endregion
 
-        #region +Admin
+    #region +Admin
 
-        public static void ShowSignInScript()
-        {
-            Console.WriteLine($@"
+    public static void ShowSignInScript()
+    {
+        Console.WriteLine($@"
                                                 ╔═══════════╗
                                                 ║  Sign In  ║
                                                 ╚═══════════╝");
-        }
-        public static void ShowSignUpScript()
-        {
-            Console.WriteLine($@"
+    }
+    public static void ShowSignUpScript()
+    {
+        Console.WriteLine($@"
                                                 ╔═══════════╗
                                                 ║  Sign Up  ║
                                                 ╚═══════════╝");
-        }
-        public static void ShowBackScript()
-        {
-            Console.WriteLine($@"
+    }
+    public static void ShowBackScript()
+    {
+        Console.WriteLine($@"
                                                 ╔═══════════╗
                                                 ║   BACK    ║
                                                 ╚═══════════╝
 ");
-        }
+    }
 
-        #endregion
+    #endregion
 
-        #region +SignUp && Sign In
+    #region +SignUp && Sign In
 
-        public static void ShowSignUpHeadline()
-        {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(@"  
+    public static void ShowSignUpHeadline()
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(@"  
                                          ███████╗██╗ ██████╗ ███╗   ██╗    ██╗   ██╗██████╗ 
                                         ██╔════╝██║██╔════╝ ████╗  ██║    ██║   ██║██╔══██╗
                                         ███████╗██║██║  ███╗██╔██╗ ██║    ██║   ██║██████╔╝
                                         ╚════██║██║██║   ██║██║╚██╗██║    ██║   ██║██╔═══╝ 
                                         ███████║██║╚██████╔╝██║ ╚████║    ╚██████╔╝██║     
                                         ╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝     ╚═════╝ ╚═╝     ");
-            Console.ResetColor();
+        Console.ResetColor();
 
-        }
-        public static void ShowSignInHeadline()
-        {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(@" 
+    }
+    public static void ShowSignInHeadline()
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(@" 
                                         ███████╗██╗ ██████╗ ███╗   ██╗    ██╗ ███╗   ██╗
                                         ██╔════╝██║██╔════╝ ████╗  ██║    ██║ ████╗  ██║
                                         ███████╗██║██║  ███╗██╔██╗ ██║    ██║ ██╔██╗ ██║
@@ -153,17 +242,17 @@ namespace Exam_Hospitality
                                         ███████║██║╚██████╔╝██║ ╚████║    ██║ ██║ ╚████║
                                         ╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝    ╚═╝ ╚═╝  ╚═══╝
 ");
-            Console.ResetColor();
-        }
+        Console.ResetColor();
+    }
 
-        #endregion
+    #endregion
 
-        #region +Qeydiyyat
+    #region +Qeydiyyat
 
-        public static void ShowQeydiyyatdanKecdiz()
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(@"
+    public static void ShowQeydiyyatdanKecdiz()
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(@"
 ██████╗ ███████╗██╗   ██╗██████╗ ██╗██╗   ██╗██╗   ██╗ █████╗ ████████╗    ██╗  ██╗███████╗ ██████╗██████╗ ██╗███████╗
 ██╔═══██╗██╔════╝╚██╗ ██╔╝██╔══██╗██║╚██╗ ██╔╝╚██╗ ██╔╝██╔══██╗╚══██╔══╝    ██║ ██╔╝██╔════╝██╔════╝██╔══██╗██║╚══███╔╝
 ██║   ██║█████╗   ╚████╔╝ ██║  ██║██║ ╚████╔╝  ╚████╔╝ ███████║   ██║       █████╔╝ █████╗  ██║     ██║  ██║██║  ███╔╝ 
@@ -171,11 +260,10 @@ namespace Exam_Hospitality
 ╚██████╔╝███████╗   ██║   ██████╔╝██║   ██║      ██║   ██║  ██║   ██║       ██║  ██╗███████╗╚██████╗██████╔╝██║███████╗
  ╚══▀▀═╝ ╚══════╝   ╚═╝   ╚═════╝ ╚═╝   ╚═╝      ╚═╝   ╚═╝  ╚═╝   ╚═╝       ╚═╝  ╚═╝╚══════╝ ╚═════╝╚═════╝ ╚═╝╚══════╝");
 
-            Thread.Sleep(3000);
-        }
-
-        #endregion
-    
-    
+        Thread.Sleep(3000);
     }
+
+    #endregion
+
+
 }

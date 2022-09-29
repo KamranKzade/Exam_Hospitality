@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exam_Hospitality.DataBase
+namespace Exam_Hospitality.DataBase;
+
+public static class GlobalData
 {
-    public static class GlobalData
-    {
-        public static Database database = new Database();
-    };
-}
+    public static Database database = new Database();
+};

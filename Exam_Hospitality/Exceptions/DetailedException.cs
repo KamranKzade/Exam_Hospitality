@@ -4,31 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exam_Hospitality.Exceptions
+namespace Exam_Hospitality.Exceptions;
+
+public class DetailedException : Exception
 {
-    public class DetailedException : Exception
+    public DetailedException(string messageOfException, DateTime date, int line, string file)
     {
-        public DetailedException(string messageOfException, DateTime date, int line, string file)
+        MessageOfException = messageOfException;
+        Date = date;
+        Line = line;
+        File = file;
+    }
+    public string MessageOfException { get; set; }
+    public DateTime Date { get; set; }
+    public int Line { get; set; }
+    public string File { get; set; }
+    public override string Message
+    {
+        get
         {
-            MessageOfException = messageOfException;
-            Date = date;
-            Line = line;
-            File = file;
-        }
-        public string MessageOfException { get; set; }
-        public DateTime Date { get; set; }
-        public int Line { get; set; }
-        public string File { get; set; }
-        public override string Message
-        {
-            get
-            {
-                return $@"====================================================================================
+            return $@"====================================================================================
 Error : {MessageOfException}
 Date : {Date.ToLongDateString()}, {Date.ToLongTimeString()}
 Line : {Line}
 File : {File}";
-            }
         }
     }
 }
