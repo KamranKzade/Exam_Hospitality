@@ -8,7 +8,7 @@ namespace Exam_Hospitality.DataBase;
 public class Database
 {
     public List<Admin> Admins { get; set; } = new List<Admin>();
-    public List<Doctor> Doctors { get; set; } = new List<Doctor>();
+    public List<Doctor> Doctors { get; set; } = new();
 
     public Database(List<Admin> admins, List<Doctor> doctors)
     {

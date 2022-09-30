@@ -123,4 +123,65 @@ class Cursor
     }
 
 
+
+    public static int ShowSignInChoiceMenu()
+    {
+        int counter = 0;
+        const int size = 4;
+        ConsoleColor[] Set = new ConsoleColor[size] { ConsoleColor.Yellow, ConsoleColor.Yellow, ConsoleColor.Yellow, ConsoleColor.Yellow };
+        Console.CursorVisible = false;
+
+        while (true)
+        {
+            Console.Clear();
+            Console.ResetColor();
+            for (int i = 0; i < size; i++)
+            {
+                if (i == counter)
+                    Set[i] = ConsoleColor.Red;
+                else
+                    Set[i] = ConsoleColor.Yellow;
+            }
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            VisualHelper.ChoiceScript();
+            Console.ForegroundColor = Set[0];
+            VisualHelper.ShowAddDoctorScript();
+            Console.ForegroundColor = Set[1];
+            VisualHelper.ShowDoctorAllScript();
+            Console.ForegroundColor = Set[2];
+            VisualHelper.EditDoctorScript();
+            Console.ForegroundColor = Set[3];
+            VisualHelper.DeleteDoctorScript();
+            
+
+            Console.SetCursorPosition(0, 0);
+            Console.WriteLine("");
+
+            ConsoleKeyInfo key = Console.ReadKey();
+
+            if (key.Key == ConsoleKey.UpArrow && counter != 0)
+            {
+                counter--;
+            }
+            else if (key.Key == ConsoleKey.DownArrow && counter != size - 1)
+            {
+                counter++;
+            }
+            else if (key.Key == ConsoleKey.Enter)
+            {
+                if (counter == 0)
+                    return 0;
+                else if (counter == 1)
+                    return 1;
+                else if (counter == 2)
+                    return 2;
+                else if (counter == 3)
+                    return 3;
+            }
+            Console.CursorVisible = false;
+        }
+    }
+
+
 }

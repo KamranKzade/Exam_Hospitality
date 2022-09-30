@@ -325,4 +325,57 @@ public class VisualHelper
     }
 
     #endregion
+
+
+
+
+    #region SignInChoice
+
+    public static void ShowAddDoctorScript()
+    {
+        Console.WriteLine($@"                  
+                                                ╔══════════════════╗
+                                                ║    Add Doctor    ║
+                                                ╚══════════════════╝");
+    }
+    public static void ShowDoctorAllScript()
+    {
+        Console.WriteLine($@"                   
+                                                ╔══════════════════╗
+                                                ║  Show Doctor All ║
+                                                ╚══════════════════╝");
+    }
+
+
+    public static void EditDoctorScript()
+    {
+        Console.WriteLine($@"                   
+                                                ╔══════════════════╗
+                                                ║    Edit Doctor   ║
+                                                ╚══════════════════╝");
+    }
+
+
+    public static void DeleteDoctorScript()
+    {
+        Console.WriteLine($@"                   
+                                                ╔══════════════════╗
+                                                ║   Delete Doctor  ║
+                                                ╚══════════════════╝");
+    }
+
+
+    public static void ChoiceScript()
+    {
+        Console.WriteLine(@" 
+                                    ██████╗██╗  ██╗ ██████╗ ██╗ ██████╗███████╗
+                                    ██╔════╝██║  ██║██╔═══██╗██║██╔════╝██╔════╝
+                                    ██║     ███████║██║   ██║██║██║     █████╗  
+                                    ██║     ██╔══██║██║   ██║██║██║     ██╔══╝  
+                                    ╚██████╗██║  ██║╚██████╔╝██║╚██████╗███████╗
+                                     ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝ ╚═════╝╚══════╝");
+    }
+
+
+    #endregion
 }

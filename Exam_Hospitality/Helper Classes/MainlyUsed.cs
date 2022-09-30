@@ -58,13 +58,30 @@ public class MainlyUsed
                     Console.Clear();
                     VisualHelper.ShowSignInHeadline();
                     SignIN.SignIn();
+                    counter = Cursor.ShowSignInChoiceMenu();
 
                     Console.Clear();
-                    VisualHelper.ShowWelcome();
-                    Thread.Sleep(10000);
 
-
-
+                    switch (counter)
+                    {
+                        case 0:
+                            Console.WriteLine("Add doctor");
+                            break;
+                        case 1:
+                            LoadData();
+                            ShowAllDoctor();
+                            Thread.Sleep(2000);
+                            break;
+                        case 2:
+                            Console.WriteLine("Edit");
+                            break;
+                        case 3:
+                            Console.WriteLine("Delete");
+                            break;
+                        default:
+                            break;
+                    }
+                    Console.Clear();
                 }
 
                 else if (counter == 1)
@@ -204,6 +221,15 @@ public class MainlyUsed
 
         List<Doctor> pediatricsDoctors, traumatologyDoctors, dentistryDoctors, dietologDoctors, psixiatrDoctors, rentgenologDoctors;
         MainlyUsed.Data(out pediatricsDoctors, out traumatologyDoctors, out dentistryDoctors, out dietologDoctors, out psixiatrDoctors, out rentgenologDoctors);
+
+
+        //   GlobalData.database.Doctors.Add(pediatricsDoctors);
+        //   GlobalData.database.Doctors.Add(traumatologyDoctors);
+        //   GlobalData.database.Doctors.Add(dentistryDoctors);
+        //   GlobalData.database.Doctors.Add(dietologDoctors);
+        //   GlobalData.database.Doctors.Add(psixiatrDoctors);
+        //   GlobalData.database.Doctors.Add(rentgenologDoctors);
+
 
         Doctor currentDoctor;
         string doctorFullname, time;
@@ -379,9 +405,53 @@ public class MainlyUsed
 
                 if (isReserved)
                     break;
+
+
             }
         }
 
+    }
+
+
+
+
+    public static void LoadData()
+    {
+        List<Doctor> pediatricsDoctors, traumatologyDoctors, dentistryDoctors, dietologDoctors, psixiatrDoctors, rentgenologDoctors;
+        Data(out pediatricsDoctors, out traumatologyDoctors, out dentistryDoctors, out dietologDoctors, out psixiatrDoctors, out rentgenologDoctors);
+
+        AddDoctorFunctor(pediatricsDoctors);
+        AddDoctorFunctor(traumatologyDoctors);
+        AddDoctorFunctor(dentistryDoctors);
+        AddDoctorFunctor(dietologDoctors);
+        AddDoctorFunctor(psixiatrDoctors);
+        AddDoctorFunctor(rentgenologDoctors);
+    }
+
+
+
+    public static void AddDoctorFunctor(List<Doctor> doctors)
+    {
+        foreach (Doctor doctor in doctors)
+        {
+            GlobalData.database.Doctors.Add(doctor);
+        }
+
+    }
+
+    public static void ShowAllDoctor()
+    {
+        foreach (Doctor doctor in GlobalData.database.Doctors)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("-------------------------------------------------------------");
+            Console.ResetColor();
+            Console.WriteLine(doctor);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("-------------------------------------------------------------");
+            Console.ResetColor();
+        }
+        Console.ReadKey();
     }
 
 }

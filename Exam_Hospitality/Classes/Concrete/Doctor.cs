@@ -83,6 +83,12 @@ public sealed class  Doctor : Human
         Console.Write($"{DegreeOfEducation}\n");
 
         Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write("Profession: ");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write($"{Profession}\n");
+
+
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("Certificate: ");
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.Write($"{Certificate}\n");
