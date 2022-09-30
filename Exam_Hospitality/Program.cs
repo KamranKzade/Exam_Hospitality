@@ -11,7 +11,7 @@ class Program
     {
         while (true)
         {
-            
+
 
             var location = Cursor.ShowStartMenu();
 
@@ -30,8 +30,4 @@ class Program
             }
         }
     }
-
-    
-
-
 }

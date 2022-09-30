@@ -222,15 +222,6 @@ public class MainlyUsed
         List<Doctor> pediatricsDoctors, traumatologyDoctors, dentistryDoctors, dietologDoctors, psixiatrDoctors, rentgenologDoctors;
         MainlyUsed.Data(out pediatricsDoctors, out traumatologyDoctors, out dentistryDoctors, out dietologDoctors, out psixiatrDoctors, out rentgenologDoctors);
 
-
-        //   GlobalData.database.Doctors.Add(pediatricsDoctors);
-        //   GlobalData.database.Doctors.Add(traumatologyDoctors);
-        //   GlobalData.database.Doctors.Add(dentistryDoctors);
-        //   GlobalData.database.Doctors.Add(dietologDoctors);
-        //   GlobalData.database.Doctors.Add(psixiatrDoctors);
-        //   GlobalData.database.Doctors.Add(rentgenologDoctors);
-
-
         Doctor currentDoctor;
         string doctorFullname, time;
         bool isReserved = false, hasFreeTime = false;
@@ -389,6 +380,7 @@ public class MainlyUsed
                             isReserved = true;
                             Console.Clear();
                             VisualHelper.ShowSuccesfully();
+                            
                             Console.ReadKey(false);
                             Console.ResetColor();
                         }
