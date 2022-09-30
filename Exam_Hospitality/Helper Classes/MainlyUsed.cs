@@ -3,9 +3,8 @@ using Exam_Hospitality.Classes.Concrete;
 using Exam_Hospitality.Classes.Concrete.Admin;
 using Exam_Hospitality.DataBase;
 using Exam_Hospitality.Json;
-
-
-
+using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace Exam_Hospitality;
 
@@ -65,11 +64,14 @@ public class MainlyUsed
                     switch (counter)
                     {
                         case 0:
-                            Console.WriteLine("Add doctor");
+                            var doctor = Doctor.SignUp();
+                            GlobalData.databaseDoctor.Doctors.Add(doctor);
+                            LoadData();
+                            JsonSerialization.SerializeDatabaseDoctor(GlobalData.databaseDoctor);
                             break;
                         case 1:
-                            LoadData();
-                            ShowAllDoctor();
+                            DataBaseForDoctors baseForDoctors = JsonSerialization.DeserializeDatabaseDoctor();
+                            ShowAllDoctor(baseForDoctors);
                             Thread.Sleep(2000);
                             break;
                         case 2:
@@ -99,8 +101,8 @@ public class MainlyUsed
         Console.Clear();
         VisualHelper.ShowSignUpHeadline();
         admin = SignUP.SignUp();
-        GlobalData.database.Admins.Add(admin);
-        JsonSerialization.SerializeDatabase(GlobalData.database);
+        GlobalData.databaseAdmin.Admins.Add(admin);
+        JsonSerialization.SerializeDatabaseAdmin(GlobalData.databaseAdmin);
 
         Console.Clear();
         VisualHelper.ShowQeydiyyatdanKecdiz();
@@ -160,6 +162,8 @@ public class MainlyUsed
     public static void Data(out List<Doctor> pediatricsDoctors, out List<Doctor> traumatologyDoctors, out List<Doctor> dentistryDoctors, out List<Doctor> dietologDoctors, out List<Doctor> psixiatrDoctors, out List<Doctor> rentgenologDoctors)
     {
         Console.ResetColor();
+
+
         List<InspectionTime> inspectionTime = new List<InspectionTime>()
     {
         new InspectionTime("09:00-11:00"),
@@ -209,7 +213,6 @@ public class MainlyUsed
         };
 
     }
-
 
     public static void Rezerv()
     {
@@ -404,9 +407,6 @@ public class MainlyUsed
 
     }
 
-
-
-
     public static void LoadData()
     {
         List<Doctor> pediatricsDoctors, traumatologyDoctors, dentistryDoctors, dietologDoctors, psixiatrDoctors, rentgenologDoctors;
@@ -418,22 +418,21 @@ public class MainlyUsed
         AddDoctorFunctor(dietologDoctors);
         AddDoctorFunctor(psixiatrDoctors);
         AddDoctorFunctor(rentgenologDoctors);
+
     }
-
-
 
     public static void AddDoctorFunctor(List<Doctor> doctors)
     {
         foreach (Doctor doctor in doctors)
         {
-            GlobalData.database.Doctors.Add(doctor);
+            GlobalData.databaseDoctor.Doctors.Add(doctor);
         }
 
     }
 
-    public static void ShowAllDoctor()
+    public static void ShowAllDoctor(DataBaseForDoctors database)
     {
-        foreach (Doctor doctor in GlobalData.database.Doctors)
+        foreach (Doctor doctor in database.Doctors)
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("-------------------------------------------------------------");
@@ -445,5 +444,7 @@ public class MainlyUsed
         }
         Console.ReadKey();
     }
+
+
 
 }

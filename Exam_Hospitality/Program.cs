@@ -11,18 +11,12 @@ class Program
     {
         while (true)
         {
-
-
             var location = Cursor.ShowStartMenu();
-
             if (location == 0)
             {
                 MainlyUsed.AdminButton();
 
-
-
             }
-
             else
             {
                 MainlyUsed.Rezerv();

@@ -14,15 +14,10 @@ public struct InspectionTime
     {
         Time = time;
     }
-   
-    //    public override string ToString()
-    //    => $@"Time: {Time}
-    //Rezerv: {(Rezerv is null ? "No" : "Yes")}";
+
 
     public override string ToString()
     {
-       
-
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("Time: ");
         Console.ForegroundColor = ConsoleColor.Red;

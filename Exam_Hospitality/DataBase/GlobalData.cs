@@ -8,5 +8,6 @@ namespace Exam_Hospitality.DataBase;
 
 public static class GlobalData
 {
-    public static Database database = new Database();
+    public static DatabaseForAdmin databaseAdmin = new ();
+    public static DataBaseForDoctors databaseDoctor = new ();
 };

@@ -326,9 +326,6 @@ public class VisualHelper
 
     #endregion
 
-
-
-
     #region SignInChoice
 
     public static void ShowAddDoctorScript()

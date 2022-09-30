@@ -16,7 +16,7 @@ public class SignIN
 {
     public static ArrayList GetUser(string username, string password)
     {
-        GlobalData.database = JsonSerialization.DeserializeDatabase();
+        GlobalData.databaseAdmin = JsonSerialization.DeserializeDatabaseAdmin();
 
         StackFrame callStack = new StackFrame(1, true);
         string currentFile = new StackTrace(true).GetFrame(0)!.GetFileName()!;
@@ -27,9 +27,9 @@ public class SignIN
         }
 
 
-        if (GlobalData.database.Admins != null)
+        if (GlobalData.databaseAdmin.Admins != null)
         {
-            foreach (var admin in GlobalData.database.Admins)
+            foreach (var admin in GlobalData.databaseAdmin.Admins)
             {
                 if (admin.UserName == username && admin.Password == password)
                 {

@@ -49,9 +49,9 @@ public class SignUP
 
     private static bool UsernameWasTaken(string username)
     {
-        if (GlobalData.database.Admins != null)
+        if (GlobalData.databaseAdmin.Admins != null)
         {
-            foreach (Admin admin in GlobalData.database.Admins)
+            foreach (Admin admin in GlobalData.databaseAdmin.Admins)
             {
                 if (admin.UserName == username)
                 {
