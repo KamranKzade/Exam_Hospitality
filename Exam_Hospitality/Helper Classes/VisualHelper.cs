@@ -79,7 +79,7 @@ public class VisualHelper
                                                 ╩  ┴─┘└─┘┴ ┴└─┘└─┘  ");
 
         Console.ResetColor();
-    
+
     }
     #endregion
 
@@ -212,6 +212,7 @@ public class VisualHelper
                                                 ╚═══════════╝
 ");
     }
+  
 
     #endregion
 
@@ -324,6 +325,7 @@ public class VisualHelper
         Console.ResetColor();
     }
 
+
     #endregion
 
     #region SignInChoice
@@ -361,6 +363,14 @@ public class VisualHelper
                                                 ╚══════════════════╝");
     }
 
+    public static void ShowBackAdminScript()
+    {
+        Console.WriteLine($@"
+                                                ╔══════════════════╗
+                                                ║       BACK       ║
+                                                ╚══════════════════╝
+");
+    }
 
     public static void ChoiceScript()
     {
@@ -375,4 +385,34 @@ public class VisualHelper
 
 
     #endregion
+
+    #region +Successfully
+
+
+    public static void ShowSuccessfullyAdded()
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(@"
+___ _  _ ____    ___  ____ ____ ___ ____ ____    _ _ _ ____ ____    ____ _  _ ____ ____ ____ ____ ____ ____ _  _ _    _    _   _    ____ ___  ___  ____ ___  
+ |  |__| |___    |  \ |  | |     |  |  | |__/    | | | |__| [__     [__  |  | |    |    |___ [__  [__  |___ |  | |    |     \_/     |__| |  \ |  \ |___ |  \ 
+ |  |  | |___    |__/ |__| |___  |  |__| |  \    |_|_| |  | ___]    ___] |__| |___ |___ |___ ___] ___] |    |__| |___ |___   |      |  | |__/ |__/ |___ |__/ 
+");
+        Console.ResetColor();
+    }
+
+    public static void ShowSuccessfullyDeleted()
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(@"
+___ _  _ ____    ___  ____ ____ ___ ____ ____    _ _ _ ____ ____    ____ _  _ ____ ____ ____ ____ ____ ____ _  _ _    _    _   _    ___  ____ _    ____ ___ ____ ___  
+ |  |__| |___    |  \ |  | |     |  |  | |__/    | | | |__| [__     [__  |  | |    |    |___ [__  [__  |___ |  | |    |     \_/     |  \ |___ |    |___  |  |___ |  \ 
+ |  |  | |___    |__/ |__| |___  |  |__| |  \    |_|_| |  | ___]    ___] |__| |___ |___ |___ ___] ___] |    |__| |___ |___   |      |__/ |___ |___ |___  |  |___ |__/ 
+   ");
+        Console.ResetColor();
+    }
+
+    #endregion
+
 }

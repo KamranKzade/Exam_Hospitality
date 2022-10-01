@@ -127,8 +127,8 @@ class Cursor
     public static int ShowSignInChoiceMenu()
     {
         int counter = 0;
-        const int size = 4;
-        ConsoleColor[] Set = new ConsoleColor[size] { ConsoleColor.Yellow, ConsoleColor.Yellow, ConsoleColor.Yellow, ConsoleColor.Yellow };
+        const int size = 5;
+        ConsoleColor[] Set = new ConsoleColor[size] { ConsoleColor.Yellow, ConsoleColor.Yellow, ConsoleColor.Yellow, ConsoleColor.Yellow, ConsoleColor.Yellow };
         Console.CursorVisible = false;
 
         while (true)
@@ -153,7 +153,8 @@ class Cursor
             VisualHelper.EditDoctorScript();
             Console.ForegroundColor = Set[3];
             VisualHelper.DeleteDoctorScript();
-            
+            Console.ForegroundColor = Set[4];
+            VisualHelper.ShowBackAdminScript();
 
             Console.SetCursorPosition(0, 0);
             Console.WriteLine("");
@@ -178,6 +179,8 @@ class Cursor
                     return 2;
                 else if (counter == 3)
                     return 3;
+                else if (counter == 4)
+                    return 4;
             }
             Console.CursorVisible = false;
         }

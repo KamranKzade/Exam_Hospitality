@@ -3,8 +3,6 @@ using Exam_Hospitality.Classes.Concrete;
 using Exam_Hospitality.Classes.Concrete.Admin;
 using Exam_Hospitality.DataBase;
 using Exam_Hospitality.Json;
-using Newtonsoft.Json;
-using System.Text.Json;
 
 namespace Exam_Hospitality;
 
@@ -54,31 +52,32 @@ public class MainlyUsed
             {
                 if (counter == 0)
                 {
+                    int counter2 = 0;
                     Console.Clear();
                     VisualHelper.ShowSignInHeadline();
                     SignIN.SignIn();
-                    counter = Cursor.ShowSignInChoiceMenu();
+                    counter2 = Cursor.ShowSignInChoiceMenu();
 
                     Console.Clear();
 
-                    switch (counter)
+
+
+                    switch (counter2)
                     {
                         case 0:
-                            var doctor = Doctor.SignUp();
-                            GlobalData.databaseDoctor.Doctors.Add(doctor);
-                            LoadData();
-                            JsonSerialization.SerializeDatabaseDoctor(GlobalData.databaseDoctor);
+                            AddDoctor();
                             break;
                         case 1:
-                            DataBaseForDoctors baseForDoctors = JsonSerialization.DeserializeDatabaseDoctor();
-                            ShowAllDoctor(baseForDoctors);
-                            Thread.Sleep(2000);
+                            ShowDoctorFull();
                             break;
                         case 2:
+                            EditDoctorData();
                             Console.WriteLine("Edit");
                             break;
                         case 3:
-                            Console.WriteLine("Delete");
+                            DeleteDoctor();
+                            break;
+                        case 4:
                             break;
                         default:
                             break;
@@ -95,21 +94,147 @@ public class MainlyUsed
         }
     }
 
-    public static Admin SignUpButton()
+    private static void EditDoctorData()
+    {
+        DataBaseForDoctors editDoctors = JsonSerialization.DeserializeDatabaseDoctor();
+        ShowAllDoctor(editDoctors);
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.Write("ENTER THE NAME AND SURNAME OF THE DOCTOR TO BE CORRECTED: ");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        string doctorFullname = Console.ReadLine()!;
+        Console.ResetColor();
+
+
+        foreach (var edit in editDoctors.Doctors)
+        {
+            if (edit?.Name?.ToLower() == doctorFullname.Split()[0].ToLower() && edit?.Surname?.ToLower() == doctorFullname.Split()[1].ToLower())
+            {
+                Console.Clear();
+                Console.WriteLine(edit);
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("#########################################################################");
+                Console.WriteLine();
+
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\n ENTER YOUR EMAIL : ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                edit.Email = Console.ReadLine()!.Trim();
+
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(@" PHONE NUMBER EXAMPLES : 
+    111 222 3344
+    1234567890
+    +1234567890
+    +123-456-7890
+    123-456-7890
+    123-456-27890");
+
+                Console.Write("\n ENTER YOUR PHONE NUMBER : ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                edit.Phone = Console.ReadLine()!.Trim();
+
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\n ENTER YOUR EXPERIENCE : ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                string exper = Console.ReadLine()!.Trim();
+                byte.TryParse(exper, out byte exper2);
+                edit.Experience = exper2;
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\n ENTER YOUR DEGREE OF EDUCATION : ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                edit.DegreeOfEducation = Console.ReadLine()!.Trim();
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\n ENTER YOUR CERTIFICATE : ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                string certificate = Console.ReadLine()!.Trim();
+                bool.TryParse(certificate, out bool certificate2);
+                edit.Certificate = certificate2;
+
+                JsonSerialization.SerializeDatabaseDoctor(editDoctors);
+                break;
+            }
+        }
+    }
+
+    private static void DeleteDoctor()
+    {
+        DataBaseForDoctors deleteDoctors = JsonSerialization.DeserializeDatabaseDoctor();
+        ShowAllDoctor(deleteDoctors);
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.Write("CHOOSE THE DOCTOR AND ENTER HIS/HER FULLNAME: ");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        string doctorFullname = Console.ReadLine()!;
+        Console.ResetColor();
+
+
+        foreach (var doctor1 in deleteDoctors.Doctors)
+        {
+            if (doctor1?.Name?.ToLower() == doctorFullname.Split()[0].ToLower() && doctor1?.Surname?.ToLower() == doctorFullname.Split()[1].ToLower())
+            {
+                deleteDoctors.Doctors.Remove(doctor1);
+                JsonSerialization.SerializeDatabaseDoctor(deleteDoctors);
+                VisualHelper.ShowSuccessfullyDeleted();
+                Thread.Sleep(3000);
+                break;
+            }
+        }
+    }
+
+    private static void ShowDoctorFull()
+    {
+        VisualHelper.ShowDoctorScript();
+        Thread.Sleep(1500);
+        DataBaseForDoctors baseForDoctors = JsonSerialization.DeserializeDatabaseDoctor();
+        ShowAllDoctor(baseForDoctors);
+        Thread.Sleep(3000);
+    }
+
+    private static void AddDoctor()
+    {
+        var doctor = Doctor.SignUp();
+
+
+        // // Bos olan zaman bu isleyecek
+        // LoadData();
+        // GlobalData.databaseDoctor.Doctors.Add(doctor);
+        // JsonSerialization.SerializeDatabaseDoctor(GlobalData.databaseDoctor);
+
+
+        DataBaseForDoctors baseForDoctors = JsonSerialization.DeserializeDatabaseDoctor();
+        baseForDoctors.Doctors.Add(doctor);
+        JsonSerialization.SerializeDatabaseDoctor(baseForDoctors);
+
+        VisualHelper.ShowSuccessfullyAdded();
+        Thread.Sleep(2000);
+    }
+
+    private static Admin SignUpButton()
     {
         Admin admin;
         Console.Clear();
         VisualHelper.ShowSignUpHeadline();
         admin = SignUP.SignUp();
-        GlobalData.databaseAdmin.Admins.Add(admin);
-        JsonSerialization.SerializeDatabaseAdmin(GlobalData.databaseAdmin);
+
+        // // Ilk defe ucun
+        // GlobalData.databaseAdmin.Admins.Add(admin);
+        // JsonSerialization.SerializeDatabaseAdmin(GlobalData.databaseAdmin);
+
+        DatabaseForAdmin databaseForAdmin = JsonSerialization.DeserializeDatabaseAdmin();
+        databaseForAdmin.Admins.Add(admin);
+        JsonSerialization.SerializeDatabaseAdmin(databaseForAdmin);
 
         Console.Clear();
         VisualHelper.ShowQeydiyyatdanKecdiz();
         return admin;
     }
 
-    public static void PasientSignIn(out string name, out string surname, out byte age, out string email, out string phone, out string city, out string complaint)
+    private static void PasientSignIn(out string name, out string surname, out byte age, out string email, out string phone, out string city, out string complaint)
     {
         Console.Clear();
         VisualHelper.EnterData();
@@ -159,7 +284,7 @@ public class MainlyUsed
         complaint = Console.ReadLine()!;
     }
 
-    public static void Data(out List<Doctor> pediatricsDoctors, out List<Doctor> traumatologyDoctors, out List<Doctor> dentistryDoctors, out List<Doctor> dietologDoctors, out List<Doctor> psixiatrDoctors, out List<Doctor> rentgenologDoctors)
+    private static void Data(out List<Doctor> pediatricsDoctors, out List<Doctor> traumatologyDoctors, out List<Doctor> dentistryDoctors, out List<Doctor> dietologDoctors, out List<Doctor> psixiatrDoctors, out List<Doctor> rentgenologDoctors)
     {
         Console.ResetColor();
 
@@ -383,7 +508,7 @@ public class MainlyUsed
                             isReserved = true;
                             Console.Clear();
                             VisualHelper.ShowSuccesfully();
-                            
+
                             Console.ReadKey(false);
                             Console.ResetColor();
                         }
@@ -407,7 +532,7 @@ public class MainlyUsed
 
     }
 
-    public static void LoadData()
+    private static void LoadData()
     {
         List<Doctor> pediatricsDoctors, traumatologyDoctors, dentistryDoctors, dietologDoctors, psixiatrDoctors, rentgenologDoctors;
         Data(out pediatricsDoctors, out traumatologyDoctors, out dentistryDoctors, out dietologDoctors, out psixiatrDoctors, out rentgenologDoctors);
@@ -421,7 +546,7 @@ public class MainlyUsed
 
     }
 
-    public static void AddDoctorFunctor(List<Doctor> doctors)
+    private static void AddDoctorFunctor(List<Doctor> doctors)
     {
         foreach (Doctor doctor in doctors)
         {
@@ -432,6 +557,7 @@ public class MainlyUsed
 
     public static void ShowAllDoctor(DataBaseForDoctors database)
     {
+
         foreach (Doctor doctor in database.Doctors)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -441,10 +567,10 @@ public class MainlyUsed
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("-------------------------------------------------------------");
             Console.ResetColor();
+            Thread.Sleep(400);
         }
-        Console.ReadKey();
-    }
 
+    }
 
 
 }
