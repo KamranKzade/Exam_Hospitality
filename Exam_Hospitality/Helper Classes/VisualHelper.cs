@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Exam_Hospitality;
+﻿namespace Exam_Hospitality;
 
 public class VisualHelper
 {
@@ -81,6 +75,24 @@ public class VisualHelper
         Console.ResetColor();
 
     }
+
+
+    public static void EnterDataDoctor()
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+
+        Console.WriteLine(@"
+╔═╗ ┌┐┌┌┬┐┌─┐┬─┐  ┌┬┐┌─┐┌┬┐┌─┐                         
+║╣  │││ │ ├┤ ├┬┘   ││├─┤ │ ├─┤                         
+╚═╝ ┘└┘ ┴ └─┘┴└─  ─┴┘┴ ┴ ┴ ┴ ┴           
+                                  ╔═╗┬  ┌─┐┌─┐┌─┐┌─┐  
+                                  ╠═╝│  ├┤ ├─┤└─┐├┤   
+                                  ╩  ┴─┘└─┘┴ ┴└─┘└─┘  ");
+
+        Console.ResetColor();
+
+    }
+
     #endregion
 
     #region +NeedLabel
@@ -394,10 +406,9 @@ public class VisualHelper
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine(@"
-___ _  _ ____    ___  ____ ____ ___ ____ ____    _ _ _ ____ ____    ____ _  _ ____ ____ ____ ____ ____ ____ _  _ _    _    _   _    ____ ___  ___  ____ ___  
- |  |__| |___    |  \ |  | |     |  |  | |__/    | | | |__| [__     [__  |  | |    |    |___ [__  [__  |___ |  | |    |     \_/     |__| |  \ |  \ |___ |  \ 
- |  |  | |___    |__/ |__| |___  |  |__| |  \    |_|_| |  | ___]    ___] |__| |___ |___ |___ ___] ___] |    |__| |___ |___   |      |  | |__/ |__/ |___ |__/ 
-");
+                    ╔╦╗┌─┐┌─┐┌┬┐┌─┐┬─┐   ╔═╗┬ ┬┌─┐┌─┐┌─┐┌─┐┌─┐┬ ┬┬  ┬  ┬ ┬    ┌─┐┌┬┐┌┬┐┌─┐┌┬┐
+                     ║║│ ││   │ │ │├┬┘   ╚═╗│ ││  │  ├┤ └─┐├┤ │ ││  │  └┬┘    ├─┤ ││ ││├┤  ││
+                    ═╩╝└─┘└─┘ ┴ └─┘┴└─   ╚═╝└─┘└─┘└─┘└─┘└─┘└  └─┘┴─┘┴─┘ ┴     ┴ ┴─┴┘─┴┘└─┘─┴┘");
         Console.ResetColor();
     }
 
@@ -415,4 +426,17 @@ ___ _  _ ____    ___  ____ ____ ___ ____ ____    _ _ _ ____ ____    ____ _  _ __
 
     #endregion
 
+    #region +ProfessionScript
+
+    public static void ShowProfessionScript()
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(@"                             ___   ___   ___   ____  ____  __   __   _   ___   _     
+                            | |_) | |_) / / \ | |_  | |_  ( (` ( (` | | / / \ | |\ | 
+                            |_|   |_| \ \_\_/ |_|   |_|__ _)_) _)_) |_| \_\_/ |_| \|");
+        Console.ResetColor();
+    }
+
+    #endregion
 }

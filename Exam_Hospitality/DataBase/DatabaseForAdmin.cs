@@ -1,5 +1,4 @@
-﻿using Exam_Hospitality.Classes.Concrete;
-using Exam_Hospitality.Classes.Concrete.Admin;
+﻿using Exam_Hospitality.Classes.Concrete.Admin;
 
 
 

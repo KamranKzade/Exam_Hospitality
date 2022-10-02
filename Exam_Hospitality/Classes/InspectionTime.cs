@@ -8,7 +8,6 @@ public struct InspectionTime
 {
     public string? Time { get; set; }
 
-
     public Pasient? Rezerv { get; set; } = null;
     public InspectionTime(string time)
     {

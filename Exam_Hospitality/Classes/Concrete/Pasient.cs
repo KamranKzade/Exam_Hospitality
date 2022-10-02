@@ -3,7 +3,7 @@
 
 namespace Exam_Hospitality.Classes.Concrete;
 
-public class  Pasient : Human
+public class Pasient : Human
 {
     // Sikayet 
     private string? _complaint;
@@ -18,17 +18,15 @@ public class  Pasient : Human
         }
     }
 
-
+    public Pasient() { }
     public Pasient(string? name, string? surname, byte age, string? city, string? email, string? phone, string? sikayet)
         : base(name, surname, age, city, email, phone)
     {
         Complaint = sikayet;
     }
 
-
     public override string ToString()
         => @$"{base.ToString()}
 Complaint: {Complaint}
 ";
-
 }

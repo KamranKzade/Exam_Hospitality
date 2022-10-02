@@ -1,14 +1,8 @@
-﻿using Exam_Hospitality.Classes.Concrete.Admin;
-using Exam_Hospitality.DataBase;
+﻿using Exam_Hospitality.DataBase;
 using Exam_Hospitality.Exceptions;
 using Exam_Hospitality.Json;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exam_Hospitality;
 
@@ -20,12 +14,12 @@ public class SignIN
 
         StackFrame callStack = new StackFrame(1, true);
         string currentFile = new StackTrace(true).GetFrame(0)!.GetFileName()!;
+
         if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
         {
             Warning.Message("ALL INFORMATIONS WERE NOT ENTERED!");
             throw new DetailedException("All Informations Were Not Entered!", DateTime.Now, callStack.GetFileLineNumber(), currentFile);
         }
-
 
         if (GlobalData.databaseAdmin.Admins != null)
         {
@@ -44,10 +38,13 @@ public class SignIN
         Warning.Message("INCORRECT USERNAME OR PASSWORD! USER WAS NOT FOUND!");
         throw new DetailedException($"The user '{username}' with password '{password}' was not found!", DateTime.Now, callStack.GetFileLineNumber(), currentFile);
     }
+
     public static ArrayList SignIn()
     {
         while (true)
         {
+            Console.Clear();
+            VisualHelper.ShowSignInHeadline();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("\n ENTER YOUR USERNAME : ");
             Console.ForegroundColor = ConsoleColor.Green;
@@ -58,9 +55,18 @@ public class SignIN
             Console.ForegroundColor = ConsoleColor.Green;
             string password = Console.ReadLine()!.Trim();
 
-            ArrayList user = GetUser(username, password);
-
-            return user;
+            try
+            {
+                ArrayList user = GetUser(username, password);
+                return user;
+            }
+            catch (DetailedException ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(ex.Message);
+                Console.ReadKey();                
+                Console.ResetColor();
+            }
         }
     }
 }
