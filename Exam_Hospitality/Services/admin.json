@@ -1,0 +1,14 @@
+{
+  "Admins": [
+    {
+      "UserName": "Kamran",
+      "Password": "Kamran123",
+      "Name": "Kamran",
+      "Surname": "Karimzada",
+      "Age": 23,
+      "City": "Baku",
+      "Email": "kamran123@mail.ru",
+      "Phone": "+994 70 370 20 16"
+    }
+  ]
+}

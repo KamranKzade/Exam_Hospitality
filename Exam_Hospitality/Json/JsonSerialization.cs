@@ -11,7 +11,7 @@ public class JsonSerialization
    {
        var serializer = new JsonSerializer();
   
-       using (var sw = new StreamWriter("admin.json"))
+       using (var sw = new StreamWriter("../../../Services/admin.json"))
        {
            using (JsonTextWriter jw = new JsonTextWriter(sw))
            {
@@ -25,7 +25,7 @@ public class JsonSerialization
    {
        DatabaseForAdmin db;
        var serializer = new JsonSerializer();
-       using (var sr = new StreamReader("admin.json"))
+       using (var sr = new StreamReader("../../../Services/admin.json"))
        {
            using (var jr = new JsonTextReader(sr))
            {
@@ -39,7 +39,7 @@ public class JsonSerialization
     {
         var serializer = new JsonSerializer();
 
-        using (var sw = new StreamWriter("doctor.json"))
+        using (var sw = new StreamWriter("../../../Services/doctor.json"))
         {
             using (JsonTextWriter jw = new JsonTextWriter(sw))
             {
@@ -53,7 +53,7 @@ public class JsonSerialization
     {
         DataBaseForDoctors db;
         var serializer = new JsonSerializer();
-        using (var sr = new StreamReader("doctor.json"))
+        using (var sr = new StreamReader("../../../Services/doctor.json"))
         {
             using (var jr = new JsonTextReader(sr))
             {
